@@ -15,7 +15,7 @@ public class ButtonManager extends JComponent {
     private ActionListener myExitButtonListener;
     private ActionListener myShowInfoButtonListener;
 
-    protected void initialize () {
+    protected ButtonManager() {
         makeListeners();
         makeButtons();
     }
@@ -25,7 +25,7 @@ public class ButtonManager extends JComponent {
             @Override
             public void actionPerformed (ActionEvent e) {
                 // do stuff
-
+//                updateGraphicsPanel();
             }
         };
 
@@ -51,8 +51,6 @@ public class ButtonManager extends JComponent {
         createButton("EXIT").addActionListener(myExitButtonListener);
         createButton("SHOWINFO").addActionListener(myShowInfoButtonListener);
     }
-
-
 
     public static JButton createButton (String name) {
         JButton button = new JButton(name);
