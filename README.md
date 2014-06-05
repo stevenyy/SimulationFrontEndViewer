@@ -9,5 +9,10 @@ Task:	Experimenting with Google API and APK
 		Creating a prototype GUI (swing and factory pattern)
 		Start fundamental design
 		Review several work document
+Done: 	Reading Papers on topic
+		Reviewing requirement of the platform (pdf)
 
-
+0605
+TODO: 	Reorganize application structure
+		Implement basic architecture of the program
+		** Incorporate MVC and Observer pattern
