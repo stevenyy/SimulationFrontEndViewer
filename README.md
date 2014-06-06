@@ -20,5 +20,15 @@ Done: 	Reading Papers on topic
 TODO: 	Reorganize application structure
 
 		Implement basic architecture of the program
-		
+
 		** Incorporate MVC and Observer pattern
+
+Done: 	All
+
+0606:
+TODO: 	Finish GUI Structure 
+		
+		Start Incorporating GoogleMap API
+
+		Reading supporting papers
+

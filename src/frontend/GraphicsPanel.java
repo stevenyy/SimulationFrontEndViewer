@@ -45,4 +45,9 @@ public class GraphicsPanel extends JPanel implements View {
 
     }
 
+    public void setImageFile (String name) {
+        // TODO Auto-generated method stub
+        
+    }
+
 }

@@ -6,13 +6,13 @@ import java.awt.GridLayout;
 import java.util.List;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
-
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import backend.Model;
 
 //import jgame.JGPoint;
 //import backend.Model;
@@ -26,29 +26,18 @@ public class SimulationDisplay {
         public SimulationDisplay(){
                 build();
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+          
         
         public void build(){
-                FrontendViewer display = new FrontendViewer();
-                CommandPanel myCommandPanel = new CommandPanel(display);
-                Model model= new Model(myCommandPanel);
+                FrontEndViewer display = new FrontEndViewer();
+//                CommandPanel myCommandPanel = new CommandPanel(display);
+                Model model= new Model();
                 GraphicsPanel myGraphicsPanel = new GraphicsPanel(new JGPoint(GRAPHICS_PANEL_SIZE_X,GRAPHICS_PANEL_SIZE_Y), model);
                 display.setCommandPanel(myCommandPanel);
                 display.setGraphicsPanel(myGraphicsPanel);
                 display.setModel(model);
                 display.makePanels();
+                
                 model.makeTurtle();
                 display.makeImageButton();
                 JPanel jp = new JPanel();
