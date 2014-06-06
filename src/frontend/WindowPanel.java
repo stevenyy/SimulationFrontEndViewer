@@ -1,5 +1,7 @@
 package frontend;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JList;
 import backend.Model;
 /**
@@ -7,6 +9,8 @@ import backend.Model;
  * @author siyangwang
  */
 public class WindowPanel extends JList implements View{
+    public static final List<String> windowList = new ArrayList<String>();
+    
 
     public WindowPanel (FrontEndViewer frontEndViewer) {
         // TODO Auto-generated constructor stub

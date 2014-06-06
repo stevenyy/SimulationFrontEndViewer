@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+	<h1 align = "center">Simulation Frontend Viwer Help Page</h1>
+
+	<h3 align = "center">Turtle Commands</h3>
+
+	<table border="3" align="center">
+	<tr>
+		<td>
+			<strong>Command Name</strong>
+		</td>
+		<td>
+			<strong>Command Description</strong>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			FORWARD <em>pixels</em>
+		</td>
+		<td>
+			Moves turtle forward in its current heading by <em>pixels</em> distance
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			FD <em>pixels</em>
+		</td>
+		<td>
+			Returns the value of <em>pixels</em>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			BACK <em>pixels</em>
+		</td>
+		<td>
+			Moves turtle backward in its current heading by <em>pixels</em> distance
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			BK <em>pixels</em>
+		</td>
+		<td>
+			Returns the value of <em>pixels</em>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			LEFT <em>degrees</em>
+		</td>
+		<td>
+			Turns turtle counterclockwise by <em>degrees</em> angle
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			RIGHT <em>degrees</em>
+		</td>
+		<td>
+			Turns turtle clockwise by <em>degrees</em> angle
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			SETHEADING <em>degrees</em>
+		</td>
+		<td>
+			Turns turtle to an absolute heading
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			SETH <em>degrees</em>
+		</td>
+		<td>
+			Returns number of degrees moved
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			SETXY <em>x y</em>
+		</td>
+		<td>
+			Moves turtle to an absolute screen position, where (0, 0) is the center of the screen
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			GOTOXY <em>x y</em>
+		</td>
+		<td>
+			Returns the distance turtle moved
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			PENDOWN
+		</td>
+		<td>
+			Puts pen down such that when the turtle moves, it leaves a trail
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			PD
+		</td>
+		<td>
+			Returns 1
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			PENUP
+		</td>
+		<td>
+			Puts pen up such that when the turtle moves, it does not leave a trail
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			PU
+		</td>
+		<td>
+			Returns 0
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			SHOWTURTLE
+		</td>
+		<td>
+			Makes turtle visible
+		</td>
+	</tr>		
+
+	<tr>
+		<td>
+			ST
+		</td>
+		<td>
+			Returns 1
+		</td>
+	</tr>	
+
+	<tr>
+		<td>
+			HIDETURTLE
+		</td>
+		<td>
+			Makes turtle invisible
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			HT
+		</td>
+		<td>
+			Returns 0
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			HOME
+		</td>
+		<td>
+			Moves turtle to the center of the screen (0 0), 
+			Returns the distance turtle moved
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			CLEARSCREEN
+		</td>
+		<td>
+			Erases turtle's trails and sends it to the home position
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			CS
+		</td>
+		<td>
+			Returns the distance the turtle moved
+		</td>
+	</tr>
+</table>
+
+<h3 align= "center">Turtle Queries</h3>
+<table border="3" align="center">
+	<tr>
+		<td>
+			<strong>Command Name</strong>
+		</td>
+		<td>
+			<strong>Command Description</strong>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			XCOR
+		</td>
+		<td>
+			Returns the turtle's X coordinate from the center of the screen
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			YCOR
+		</td>
+		<td>
+			Returns the turtle's Y coordinate from the center of the screen
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			HEADING
+		</td>
+		<td>
+			Returns the turtle's heading in degrees
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			PENDOWN?<br>
+			PENDOWNP
+		</td>
+		<td>
+			Returns 1 if turtle's pen is down, 0 if it is up
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			SHOWING?<br>
+			SHOWINGP
+		</td>
+		<td>
+			Returns 1 if turtle is showing, 0 if it is hiding
+		</td>
+	</tr>
+
+</table>
+
+<h3 align="center">Math Operations</h3>
+
+<table align="center" border="3">
+	<tr>
+		<td>
+			<strong>Command Name</strong>
+		</td>
+		<td>
+			<strong>Command Description</strong>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			SUM <em>expr1 expr2</em><br>
+			+ <em>expr1 expr2</em>
+		</td>
+		<td>
+			Returns sum of the values of <em>expr1</em> and <em>expr2</em>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			DIFFERENCE <em>expr1 expr2</em><br>
+			- <em>expr1 expr2</em>
+		</td>
+		<td>
+			Returns difference of the values of <em>expr1</em> and <em>expr2</em>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			PRODUCT <em>expr1 expr2</em><br>
+			* <em>expr1 expr2</em>
+		</td>
+		<td>
+			Returns product of the values of <em>expr1</em> and <em>expr2</em>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			QUOTIENT <em>expr1 expr2</em><br>
+			/ <em>expr1 expr2</em>
+		</td>
+		<td>
+			Returns quotient of the values of <em>expr1</em> and <em>expr2</em>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			REMAINDER <em>expr1 expr2</em><br>
+			% <em>expr1 expr2</em>
+		</td>
+		<td>
+			Returns integer remainder on dividing the values of <em>expr1</em> by <em>expr2</em>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			MINUS <em>expr</em><br>
+			~ <em>expr</em>
+		</td>
+		<td>
+			Returns negative of the values of <em>expr</em>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			RANDOM <em>max</em>
+		</td>
+		<td>
+			Returns random non-negative number strictly less than <em>max</em>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			SIN <em>degrees</em>
+		</td>
+		<td>
+			Returns sine of <em>degrees</em>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			COS <em>degrees</em>
+		</td>
+		<td>
+			Returns cosine of <em>degrees</em>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			TAN <em>degrees</em>
+		</td>
+		<td>
+			Returns tangent of <em>degrees</em> <br>
+			note, since this function is defined continuously, take appropriate action (i.e., divide-by-zero might silently return zero) 
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			ATAN <em>degrees</em>
+		</td>
+		<td>
+			Returns arctangent of <em>degrees</em> <br>
+			note, since this function is defined continuously, take appropriate action (i.e., divide-by-zero might silently return zero) 
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			LOG <em>expr</em>
+		</td>
+		<td>
+			Returns natural log of <em>expr</em>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			POW <em>base exponent</em>
+		</td>
+		<td>
+			Returns <em>base</em> raised to the <em>power</em> of the exponent
+		</td>
+	</tr>
+</table>
+
+<h3 align="center">Boolean Operations</h3>
+
+<table align="center" border="3">
+	<tr>
+		<td>
+			<strong>Command Name</strong>
+		</td>
+		<td>
+			<strong>Command Description</strong>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			LESS? <em>expr1 expr2</em><br>
+			LESSP <em>expr1 expr2</em>
+		</td>
+		<td>
+			Returns 1 if the value of <em>expr1</em> is strictly less than the value of <em>expr2</em>, otherwise 0
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			GREATER? <em>expr1 expr2</em><br>
+			GREATERP <em>expr1 expr2</em>
+		</td>
+		<td>
+			Returns 1 if the value of <em>expr1</em> is strictly greater than the value of <em>expr2</em>, otherwise 0
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			EQUAL? <em>expr1 expr2</em><br>
+			EQUALP <em>expr1 expr2</em>
+		</td>
+		<td>
+			Returns 1 if the value of <em>expr1</em> and the value of <em>expr2</em> are equal, otherwise 0
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			NOTEQUAL? <em>expr1 expr2</em><br>
+			NOTEQUALP <em>expr1 expr2</em>
+		</td>
+		<td>
+			Returns 1 if the value of <em>expr1</em> and the value of <em>expr2</em> are not equal, otherwise 0
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			AND <em>test1 test2</em>
+		</td>
+		<td>
+			Returns 1 if <em>test1</em> and <em>test2</em> are non-zero, otherwise 0
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			OR <em>test1 test2</em>
+		</td>
+		<td>
+			Returns 1 if <em>test1</em> or <em>test2</em> are non-zero, otherwise 0
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			NOT <em>test</em>
+		</td>
+		<td>
+			Returns 1 if <em>test</em> is 0 and 0 if <em>test</em> is non-zero
+		</td>
+	</tr>
+
+</table>
+
+<h3 align="center">Control Structures</h3>
+<table align="center" border="3">
+	<tr>
+		<td>
+			Command Name
+		</td>
+		<td>
+			Command Description
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			REPEAT <em>expr [ command(s) ]</em>
+		</td>
+		<td>
+			runs the <em>commands</em> given in the list the value of expr number of times<br>
+returns the value of the final command executed<br>
+note, the value of the current iteration, starting at 1, is automatically assigned to the variable :repcount so that it can be accessed by the <em>commands</em>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			IF <em>expr [ command(s) ]</em>
+		</td>
+		<td>
+			 	if <em>expr</em> is not 0, runs the <em>commands</em> given in the list<br>
+returns the value of the final command executed
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			IFELSE <em>expr <br>[ trueCommand(s) ]<br> [ falseCommand(s) ] </em>
+		</td>
+		<td>
+			 	if <em>expr</em> is not 0, runs the <em>trueCommands</em> given in the first list, otherwise runs the <em>falseCommands</em> given in the second list<br>
+returns the value of the final command executed
+		</td>
+	</tr>
+
+</table>
+
+</body>
+</html>

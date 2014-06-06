@@ -17,8 +17,15 @@ import backend.Model;
 @SuppressWarnings("serial")
 public class GraphicsPanel extends JPanel implements View {
     private BufferedImage myImage;
+    private Model myModel;
 
-    public GraphicsPanel () {
+    public GraphicsPanel (Model md) {
+        myModel=md;
+        myModel.registerView(this);
+        simplePaint();
+    }
+    
+    private void simplePaint(){
         try {
             myImage = ImageIO.read(new File("frontend/resources/SampleMap.png"));
         }

@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
-
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -22,239 +21,136 @@ import javax.swing.JSeparator;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.filechooser.FileNameExtensionFilter;
-
-//import frontend.InfoPanel;
-//import frontend.EchoPanel;
+import sun.security.pkcs.ParsingException;
+import com.google.apphosting.api.ApiProxy.ArgumentException;
+// import frontend.InfoPanel;
+// import frontend.EchoPanel;
 import backend.Model;
 import frontend.ButtonManager;
+
+
 /**
  * This is the front end model that packs multiple Managers (JComponents)
  * and Panels together and arrange organize them together to make GUI
  * @author siyangwang
  * */
-
 @SuppressWarnings("serial")
-public class FrontEndViewer extends JPanel{
+public class FrontEndViewer extends JPanel {
 
     private static final String DISPLAY_OFFSET = " ";
     private static final int DEFAULT_PANEL_SIZE_X = 200;
     private static final int DEFAULT_PANEL_SIZE_Y = 300;
 
-    private JButton myHelpButton;
     private JButton myRunButton;
-    private LoadResultButton myLoadResultButton;
     private GraphicsPanel myGraphicsPanel;
     private WindowPanel myWindowPanel;
-    
-    private ActionListener myPaintButtonListener;
-    private ActionListener myExitButtonListener;
-    private ActionListener myShowInfoButtonListener;
 
     private Model myModel;
     private ButtonManager myButtonManager;
-    private PanelManager myPanelManager;
     private MenuManager myMenuManager;
     private InfoPanel myInfoPanel;
 
+    //TODO: need to fix problem in ButtonManager's initialization 
     public FrontEndViewer () {
         myButtonManager = new ButtonManager();
         myMenuManager = new MenuManager();
-        
-        myPaintButtonListener = myButtonManager.getPaintButtonListener();
-        myShowInfoButtonListener = myButtonManager.getPaintButtonListener();
     }
 
-
-    protected void makePanels() {
+    protected void makePanels () {
         myWindowPanel = new WindowPanel(this);
         myInfoPanel = new InfoPanel(myModel);
-        //makeImageButton();
+        // makeImageButton();
     }
 
-    public void setGraphicsPanel(GraphicsPanel graphicsPanel) {
+    public void setGraphicsPanel (GraphicsPanel graphicsPanel) {
         myGraphicsPanel = graphicsPanel;
+        myButtonManager.setGraphPanel(graphicsPanel);
     }
 
-    public void setModel(Model md){
+    public void setInfoPanel (InfoPanel infoPanel) {
+        myInfoPanel = infoPanel;
+    }
+    
+    public void setModel (Model md) {
         myModel = md;
-        if(myInfoPanel!=null)
-            myInfoPanel.setModel(md);
-        if (myLoadImageButton!=null)
-            myLoadImageButton.setMyModel(myModel);
+        if (myInfoPanel != null)
+            myInfoPanel.setModel(myModel);
+        if (myRunButton != null)
+            myButtonManager.setModel(myModel);
     }
-
-    protected void makeListeners () {
-
-        myEchoListener = new ActionListener() {
-            @Override
-            public void actionPerformed (ActionEvent e) {
-                updateEchoPanel(); 
-                updateProceduresPanel();
-                updataVariablesPanel();
-            }
-        };
-
-        myRunButtonListener = new ActionListener() {
-            @Override
-            public void actionPerformed (ActionEvent e) {
-                //do stuff
-                startRunning();
-            }
-        };
-
-        myHelpButtonListener = new ActionListener(){
-            public void actionPerformed (ActionEvent e) {
-                //do stuff
-                displayHelpWindow();
-            }
-        };
-    }
-
-    public void updateEchoPanel(){
-        myEchoPanel.update(myCommandPanel.getText());
-        myCommandPanel.update("");
-    }
-
-    public void updateCommandPanel(String s){
-        myCommandPanel.update(s);
-    }
-
-    public void updateProceduresPanel(){
-        for(String procedure : myModel.getProcedures()){
+//TODO Finish the update part of all panels
+    public void updateProceduresPanel () {
+        for (String procedure : myModel.getProcedures()) {
             myProceduresPanel.update(procedure);
-        } 
+        }
     }
 
-    public void updataVariablesPanel(){
+    public void updataVariablesPanel () {
         myVariablesPanel.update(myModel);
     }
+    
+    public void updateWindowPanel(){
+        myWindowPanel.update("");
+    }
 
-    public void displayHelpWindow(){
-        Desktop desktop=Desktop.getDesktop();
-        File helpFile= new File("src/frontend/help.html");
+    public void displayHelpWindow () {
+        Desktop desktop = Desktop.getDesktop();
+        File helpFile = new File("src/frontend.resources/help.html");
         try {
             desktop.open(helpFile);
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
     }
 
-    public void startRunning(){
+    public void startRunning () {
         try {
             myModel.run();
-        } catch (ParsingException e1) {
-            showError("Parsing Error");
-        } catch (ArgumentException e1) {
-            showError("Argument Error");
+        }
+        catch (ParsingException e1) {
+            Util.showError("Parsing Error");
+        }
+        catch (ArgumentException e1) {
+            Util.showError("Argument Error");
         }
     }
 
-    private void showError (String message) {
-        JOptionPane.showMessageDialog(this, message, 
-                                      "Error",
-                                      JOptionPane.ERROR_MESSAGE);
-    }
-
-    protected JComponent makeAllPanelsAndButtons () {
+    protected JComponent makeAssistPanels() {
         // create with size in rows and columns
         JPanel result = new JPanel();
         result.setLayout(new BorderLayout());
-        result.add(makeAllPanelsAndButtonsLeft(), BorderLayout.WEST);
-        result.add(makeAllPanelsAndButtonsRight(), BorderLayout.EAST);
+        result.add(makeInfoPanel(), BorderLayout.WEST);
+        result.add(makeWindowPanel(), BorderLayout.EAST);
         return result;
     }
 
-    protected JComponent makeAllPanelsAndButtonsLeft () {
-        JPanel result = new JPanel();
-        result.setLayout(new BorderLayout());
-        result.add(makeInfoPanel(), BorderLayout.NORTH);
-        result.add(makeEchoPanel(), BorderLayout.SOUTH);                
-        return result;
-    }
-
-    protected JComponent makeAllPanelsAndButtonsRight () {
-        JPanel result = new JPanel();
-        result.setLayout(new BorderLayout());
-        result.add(makeUserDefinedPanel(), BorderLayout.NORTH);
-        result.add(makeButtons(),BorderLayout.SOUTH);
-        return result;
-    }
-
-    private JComponent makeButtons(){
-        JPanel result= new JPanel();
-        result.setLayout(new BorderLayout());           
-        result.add(myRunButton,BorderLayout.SOUTH);
-        result.add(myHelpButton, BorderLayout.CENTER);
-        result.add(myLoadImageButton.getImageButton(), BorderLayout.NORTH);
-        return result;
-    }
-
-    private JComponent makeInfoPanel(){
+    private JComponent makeInfoPanel () {
         JPanel result = new JPanel();
         result.setLayout(new BorderLayout());
         JScrollPane sp = new JScrollPane(myInfoPanel);
-        sp.setPreferredSize(new Dimension(DEFAULT_PANEL_SIZE_X,DEFAULT_PANEL_SIZE_Y+100));
-        result.add(new JLabel(DISPLAY_OFFSET + "Info Panel"),BorderLayout.CENTER);
-        result.add(sp, BorderLayout.SOUTH);             
+        sp.setPreferredSize(new Dimension(DEFAULT_PANEL_SIZE_X, DEFAULT_PANEL_SIZE_Y + 100));
+        result.add(new JLabel(DISPLAY_OFFSET + "Info Panel"), BorderLayout.CENTER);
+        result.add(sp, BorderLayout.SOUTH);
         return result;
     }
 
-    private JComponent makeEchoPanel(){
+    private JComponent makeWindowPanel () {
         JPanel result = new JPanel();
         result.setLayout(new BorderLayout());
-        JScrollPane sp = new JScrollPane(myEchoPanel);
-        sp.setPreferredSize(new Dimension(DEFAULT_PANEL_SIZE_X,DEFAULT_PANEL_SIZE_Y));
-        result.add(new JLabel(DISPLAY_OFFSET + "Input Commands"),BorderLayout.CENTER);
-        result.add(sp,BorderLayout.SOUTH);
+        JScrollPane sp = new JScrollPane(myWindowPanel);
+        sp.setPreferredSize(new Dimension(DEFAULT_PANEL_SIZE_X, DEFAULT_PANEL_SIZE_Y));
+        result.add(new JLabel(DISPLAY_OFFSET + "Open Window"), BorderLayout.CENTER);
+        result.add(sp, BorderLayout.SOUTH);
         return result;
     }
-
-    private JComponent makeVariablesPanel(){
-        JPanel result = new JPanel();
-        result.setLayout(new BorderLayout());
-        JScrollPane sp = new JScrollPane(myVariablesPanel);
-        sp.setPreferredSize(new Dimension(DEFAULT_PANEL_SIZE_X,DEFAULT_PANEL_SIZE_Y));
-        result.add(new JLabel(DISPLAY_OFFSET + "User Defined Variables"),BorderLayout.CENTER);
-        result.add(sp,BorderLayout.SOUTH);
-        return result;
+    
+    public ButtonManager getButtonManager(){
+        return myButtonManager;
     }
-
-    private JComponent makeProceduresPanelPanel(){
-        JPanel result = new JPanel();
-        result.setLayout(new BorderLayout());
-        JScrollPane sp = new JScrollPane(myProceduresPanel);
-        sp.setPreferredSize(new Dimension(DEFAULT_PANEL_SIZE_X,DEFAULT_PANEL_SIZE_Y));
-        result.add(new JLabel(DISPLAY_OFFSET + "User Defined Functions"),BorderLayout.CENTER);
-        result.add(sp,BorderLayout.SOUTH);
-        return result;
+    
+    public MenuManager getMenuManager(){
+        return myMenuManager;
     }
-
-    private JComponent makeUserDefinedPanel(){
-        JPanel result = new JPanel();
-        result.setLayout(new BorderLayout());
-        result.add(new JLabel(DISPLAY_OFFSET + "User Definded Variables and Methods"),BorderLayout.NORTH);
-        result.add(makeVariablesPanel(), BorderLayout.NORTH);   
-        result.add(makeProceduresPanelPanel(), BorderLayout.SOUTH);             
-        return result;
-    }
-
-
-    protected void makeRunButton () {
-        myRunButton = new JButton("RUN");
-        myRunButton.addActionListener(myEchoListener);
-        myRunButton.addActionListener(myRunButtonListener);
-    }
-
-    protected void makeHelpButton(){
-        myHelpButton=new JButton("HELP");
-        myHelpButton.addActionListener(myHelpButtonListener);
-    }
-
-    public void makeImageButton() {
-        LoadImageButton o = new LoadImageButton(myGraphicsPanel, myModel);      
-        myLoadImageButton=o;
-    }
-
 }
