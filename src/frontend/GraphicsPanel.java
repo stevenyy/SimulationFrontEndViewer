@@ -1,5 +1,6 @@
 package frontend;
 
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -19,15 +20,16 @@ public class GraphicsPanel extends JPanel implements View {
     private BufferedImage myImage;
     private Model myModel;
 
-    public GraphicsPanel (Model md) {
+    public GraphicsPanel (int SizeX, int SizeY, Model md) {
         myModel=md;
         myModel.registerView(this);
+        this.setPreferredSize(new Dimension(SizeX, SizeY));
         simplePaint();
     }
     
     private void simplePaint(){
         try {
-            myImage = ImageIO.read(new File("frontend/resources/SampleMap.png"));
+            myImage = ImageIO.read(new File("src/frontend/resources/SampleMap.png"));
         }
         catch (IOException ex) {
             // should not reach here

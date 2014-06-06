@@ -31,7 +31,7 @@ public class SimulationDisplay {
 
     public void build () {
         Model model = new Model();
-        GraphicsPanel myGraphicsPanel = new GraphicsPanel(model);
+        GraphicsPanel myGraphicsPanel = new GraphicsPanel(GRAPHICS_PANEL_SIZE_X, GRAPHICS_PANEL_SIZE_Y, model);
         FrontEndViewer display = new FrontEndViewer();
         display.setGraphicsPanel(myGraphicsPanel);
         display.setModel(model);

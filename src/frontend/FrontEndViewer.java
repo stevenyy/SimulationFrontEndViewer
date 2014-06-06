@@ -131,7 +131,7 @@ public class FrontEndViewer extends JPanel {
         result.setLayout(new BorderLayout());
         JScrollPane sp = new JScrollPane(myInfoPanel);
         sp.setPreferredSize(new Dimension(DEFAULT_PANEL_SIZE_X, DEFAULT_PANEL_SIZE_Y + 100));
-        result.add(new JLabel(DISPLAY_OFFSET + "Info Panel"), BorderLayout.CENTER);
+        result.add(new JLabel(DISPLAY_OFFSET + "Info Panel"), BorderLayout.NORTH);
         result.add(sp, BorderLayout.SOUTH);
         return result;
     }
@@ -140,8 +140,8 @@ public class FrontEndViewer extends JPanel {
         JPanel result = new JPanel();
         result.setLayout(new BorderLayout());
         JScrollPane sp = new JScrollPane(myWindowPanel);
-        sp.setPreferredSize(new Dimension(DEFAULT_PANEL_SIZE_X, DEFAULT_PANEL_SIZE_Y));
-        result.add(new JLabel(DISPLAY_OFFSET + "Open Window"), BorderLayout.CENTER);
+        sp.setPreferredSize(new Dimension(DEFAULT_PANEL_SIZE_X - 100, DEFAULT_PANEL_SIZE_Y));
+        result.add(new JLabel(DISPLAY_OFFSET + "Open Window"), BorderLayout.NORTH);
         result.add(sp, BorderLayout.SOUTH);
         return result;
     }
