@@ -19,6 +19,7 @@ import frontend.Util;
 import backend.*;
 import frontend.FrontEndViewer;
 
+
 @SuppressWarnings("serial")
 public class MenuManager extends JComponent {
 
@@ -30,16 +31,16 @@ public class MenuManager extends JComponent {
     private static final String DEFAULT_RESOURCE_DATA = "src/backend/resources/SavedData.ser";
     private Model myModel;
     private FrontEndViewer myFrontViewer;
-    
+
     public MenuManager () {
-//        makeMenu();
+        // makeMenu();
     }
-    
-    public void setModel(Model md){
+
+    public void setModel (Model md) {
         myModel = md;
     }
-    
-    public void setFrontViewer(FrontEndViewer viewer){
+
+    public void setFrontViewer (FrontEndViewer viewer) {
         myFrontViewer = viewer;
     }
 
@@ -52,7 +53,7 @@ public class MenuManager extends JComponent {
     private JMenu makeFileSubMenu () {
 
         JMenu result = new JMenu("Menu");
-        result.add(new AbstractAction("Load Experiment Data") {
+/*        result.add(new AbstractAction("Load Experiment Data") {
             @Override
             public void actionPerformed (ActionEvent e) {
                 try {
@@ -66,31 +67,32 @@ public class MenuManager extends JComponent {
                     Util.showError(io.toString());
                 }
             }
-        });
-/*        result.add(new AbstractAction("Load Variables") {
-            @Override
-            public void actionPerformed (ActionEvent e) {
-                try {
-                    myModel.loadVariablesFromFile(DEFAULT_RESOURCE_DATA_LOAD);
-                    JOptionPane.showMessageDialog(null, "Load Variables Done", "Done",
-                                                  JOptionPane.INFORMATION_MESSAGE);
-                    myFrontViewer.updataVariablesPanel();
-                    myFrontViewer.updateProceduresPanel();
-                }
-                catch (Exception io) {
-                    Util.showError(io.toString());
-                }
-            }
         });*/
-        result.add(new AbstractAction("Visualize in Google Map") {
+        /*
+         * result.add(new AbstractAction("Load Variables") {
+         * 
+         * @Override
+         * public void actionPerformed (ActionEvent e) {
+         * try {
+         * myModel.loadVariablesFromFile(DEFAULT_RESOURCE_DATA_LOAD);
+         * JOptionPane.showMessageDialog(null, "Load Variables Done", "Done",
+         * JOptionPane.INFORMATION_MESSAGE);
+         * myFrontViewer.updataVariablesPanel();
+         * myFrontViewer.updateProceduresPanel();
+         * }
+         * catch (Exception io) {
+         * Util.showError(io.toString());
+         * }
+         * }
+         * });
+         */
+        result.add(new AbstractAction("Save Current Session") {
             @Override
             public void actionPerformed (ActionEvent e) {
                 try {
-                    myModel.saveProceduresToFile(DEFAULT_RESOURCE_RESULT_SAVE);
-                    JOptionPane.showMessageDialog(null, "Save Procedures Done", "Done",
+                    JOptionPane.showMessageDialog(null, "Save Visualization Session Done", "Done",
                                                   JOptionPane.INFORMATION_MESSAGE);
-                    myFrontViewer.updataVariablesPanel();
-                    myFrontViewer.updateProceduresPanel();
+                    // save info on current session 
                 }
                 catch (Exception io) {
                     Util.showError(io.toString());
@@ -101,16 +103,21 @@ public class MenuManager extends JComponent {
             @Override
             public void actionPerformed (ActionEvent e) {
                 try {
-                    Util.makeScreenshot((JFrame)SwingUtilities.getRoot(myFrontViewer));
-/*                    Rectangle screenRect = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
-                    BufferedImage capture = new Robot().createScreenCapture(screenRect);
-                    ImageIO.write(capture, "png", new File("SavedGraph"));*/
-                    
-/*                    myModel.saveProceduresToFile(DEFAULT_RESOURCE_RESULT_SAVE);
-                    JOptionPane.showMessageDialog(null, "Save Procedures Done", "Done",
-                                                  JOptionPane.INFORMATION_MESSAGE);
-                    myFrontViewer.updataVariablesPanel();
-                    myFrontViewer.updateProceduresPanel();*/
+                    Util.makeScreenshot((JFrame) SwingUtilities.getRoot(myFrontViewer));
+                    /*
+                     * Rectangle screenRect = new
+                     * Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
+                     * BufferedImage capture = new Robot().createScreenCapture(screenRect);
+                     * ImageIO.write(capture, "png", new File("SavedGraph"));
+                     */
+
+                    /*
+                     * myModel.saveProceduresToFile(DEFAULT_RESOURCE_RESULT_SAVE);
+                     * JOptionPane.showMessageDialog(null, "Save Procedures Done", "Done",
+                     * JOptionPane.INFORMATION_MESSAGE);
+                     * myFrontViewer.updataVariablesPanel();
+                     * myFrontViewer.updateProceduresPanel();
+                     */
                 }
                 catch (Exception io) {
                     Util.showError(io.toString());

@@ -19,6 +19,7 @@ import backend.Model;
 public class GraphicsPanel extends JPanel implements View {
     private BufferedImage myImage;
     private Model myModel;
+    private String currentVisual;
 
     public GraphicsPanel (int SizeX, int SizeY, Model md) {
         myModel=md;
@@ -46,17 +47,26 @@ public class GraphicsPanel extends JPanel implements View {
     @Override
     public void update (Model model) {
         // TODO Auto-generated method stub
+        
     }
 
     @Override
     public void update (String s) {
         // TODO Auto-generated method stub
-
+        currentVisual = s;
     }
 
     public void setImageFile (String name) {
         // TODO Auto-generated method stub
         
+    }
+    
+    public Model getModel(){
+        return myModel;
+    }
+    
+    public String getVisual(){
+        return currentVisual;
     }
 
 }

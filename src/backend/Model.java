@@ -10,6 +10,9 @@ public class Model {
     public static final String PREFERENCES_FILEPATH = "backend.resources.Preferences";
     
     private List<View> views = new ArrayList<View>();
+    
+    // One model corresponds to one JFrame
+    // model itself keeps track of which visualization method is currently used
 
     public void loadProceduresFromFile (String defaultResourceDataLoad) {
         // TODO Auto-generated method stub

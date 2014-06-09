@@ -29,7 +29,7 @@ public class SimulationDisplay {
         build();
     }
 
-    public void build () {
+    public static void build () {
         Model model = new Model();
         GraphicsPanel myGraphicsPanel = new GraphicsPanel(GRAPHICS_PANEL_SIZE_X, GRAPHICS_PANEL_SIZE_Y, model);
         FrontEndViewer display = new FrontEndViewer();
@@ -40,20 +40,19 @@ public class SimulationDisplay {
         JPanel jp = new JPanel();
         jp.setLayout(new BorderLayout());
         jp.add(myGraphicsPanel, BorderLayout.CENTER);
-//        VisualChooser vis = new ColorChooser(myGraphicsPanel);
-//        WorkspacePanel wp = new WorkspacePanel(modelList, myGraphicsPanel, myCommandPanel, display);
-//        jp.add(vis, BorderLayout.NORTH);
+        VisualChooser vis = new VisualChooser(myGraphicsPanel);
+        jp.add(vis, BorderLayout.NORTH);
         jp.add(display.getButtonManager().arrangeButtons(), BorderLayout.SOUTH);
         
         // create container that will work with Window manager
         JFrame frame = new JFrame(TITLE);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        /*frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);*/
         // add our user interface components to Frame and show it
         frame.getContentPane().add(jp, BorderLayout.WEST);
         frame.getContentPane().add(display.makeAssistPanels(), BorderLayout.EAST);
 //        frame.getContentPane().add(wp.getJPanel(), BorderLayout.SOUTH);
         frame.setJMenuBar(display.getMenuManager().makeMenu());
-
+        
         frame.pack();
         frame.setVisible(true);
     }

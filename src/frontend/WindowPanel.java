@@ -9,7 +9,7 @@ import backend.Model;
  * @author siyangwang
  */
 public class WindowPanel extends JList implements View{
-    public static final List<String> windowList = new ArrayList<String>();
+    public static final List<Model> windowList = new ArrayList<Model>();
     
 
     public WindowPanel (FrontEndViewer frontEndViewer) {

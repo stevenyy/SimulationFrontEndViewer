@@ -10,6 +10,7 @@ import javax.swing.JComponent;
 import javax.swing.JFileChooser;
 import javax.swing.JPanel;
 import backend.Model;
+import frontend.SimulationDisplay;
 
 
 @SuppressWarnings("serial")
@@ -17,11 +18,13 @@ public class ButtonManager extends JComponent {
     // private JButton exitProgram;
     private JButton myInfoButton;
     private JButton myRunButton;
+    private JButton myDuplicateWindowButton;
     private GraphicsPanel myGraphicsPanel;
     private Model myModel;
     private ActionListener myPaintButtonListener;
     // private ActionListener myExitButtonListener;
     private ActionListener myShowInfoButtonListener;
+    private ActionListener myDuplicateWindowButtonListener;
 
     protected ButtonManager () {
         // myFrontEndViwer = v;
@@ -71,6 +74,16 @@ public class ButtonManager extends JComponent {
                 // displayHelpWindow();
             }
         };
+        
+        myDuplicateWindowButtonListener = new ActionListener(){
+            @Override
+            public void actionPerformed (ActionEvent e){
+                // Open a new Window, with current visual chooser selection
+                String currentVisual = myGraphicsPanel.getVisual();
+                SimulationDisplay.build();
+            }
+        };     
+        
 
         /*
          * myExitButtonListener = new ActionListener() {
@@ -90,11 +103,14 @@ public class ButtonManager extends JComponent {
         // createButton("EXIT").addActionListener(myExitButtonListener);
         myInfoButton = createButton("SHOWINFO");
         myInfoButton.addActionListener(myShowInfoButtonListener);
+        myDuplicateWindowButton = createButton("DUPLICATE WINDOW");
+        myDuplicateWindowButton.addActionListener(myDuplicateWindowButtonListener);
     }
 
     public JComponent arrangeButtons () {
         JPanel result = new JPanel();
         result.setLayout(new BorderLayout());
+        result.add(myDuplicateWindowButton, BorderLayout.EAST);
         result.add(myRunButton, BorderLayout.CENTER);
         result.add(myInfoButton, BorderLayout.WEST);
         return result;
@@ -119,6 +135,14 @@ public class ButtonManager extends JComponent {
 
     public JButton getShowInfoButton () {
         return myInfoButton;
+    }
+    
+    public JButton getDuplicateWindowButton(){
+        return myDuplicateWindowButton;
+    }
+    
+    public ActionListener getDuplicateWindowListener(){
+        return myDuplicateWindowButtonListener;
     }
 
 }
