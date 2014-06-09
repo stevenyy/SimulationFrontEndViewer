@@ -31,11 +31,11 @@ public class ButtonManager extends JComponent {
         makeListeners();
         makeButtons();
     }
-    
+
     public void setModel(Model m){
         myModel=m;
     }
-    
+
     public void setGraphPanel(GraphicsPanel gp){
         myGraphicsPanel = gp;
     }
@@ -74,16 +74,16 @@ public class ButtonManager extends JComponent {
                 // displayHelpWindow();
             }
         };
-        
+
         myDuplicateWindowButtonListener = new ActionListener(){
             @Override
             public void actionPerformed (ActionEvent e){
-                // Open a new Window, with current visual chooser selection
                 String currentVisual = myGraphicsPanel.getVisual();
                 SimulationDisplay.build();
+                // TODO: Need implement open default window function 
             }
         };     
-        
+
 
         /*
          * myExitButtonListener = new ActionListener() {
@@ -136,11 +136,11 @@ public class ButtonManager extends JComponent {
     public JButton getShowInfoButton () {
         return myInfoButton;
     }
-    
+
     public JButton getDuplicateWindowButton(){
         return myDuplicateWindowButton;
     }
-    
+
     public ActionListener getDuplicateWindowListener(){
         return myDuplicateWindowButtonListener;
     }
