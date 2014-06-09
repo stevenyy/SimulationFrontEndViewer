@@ -39,7 +39,7 @@ public class FrontEndViewer extends JPanel {
 
     private static final String DISPLAY_OFFSET = " ";
     private static final int DEFAULT_PANEL_SIZE_X = 200;
-    private static final int DEFAULT_PANEL_SIZE_Y = 300;
+    private static final int DEFAULT_PANEL_SIZE_Y = 500;
 
     private JButton myRunButton;
     private GraphicsPanel myGraphicsPanel;
@@ -140,8 +140,8 @@ public class FrontEndViewer extends JPanel {
         JPanel result = new JPanel();
         result.setLayout(new BorderLayout());
         JScrollPane sp = new JScrollPane(myWindowPanel);
-        sp.setPreferredSize(new Dimension(DEFAULT_PANEL_SIZE_X - 100, DEFAULT_PANEL_SIZE_Y));
-        result.add(new JLabel(DISPLAY_OFFSET + "Open Window"), BorderLayout.NORTH);
+        sp.setPreferredSize(new Dimension(DEFAULT_PANEL_SIZE_X - 80, DEFAULT_PANEL_SIZE_Y));
+        result.add(new JLabel(DISPLAY_OFFSET + "Opened Windows"), BorderLayout.NORTH);
         result.add(sp, BorderLayout.SOUTH);
         return result;
     }

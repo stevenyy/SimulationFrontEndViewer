@@ -95,8 +95,8 @@ public class ButtonManager extends JComponent {
     public JComponent arrangeButtons () {
         JPanel result = new JPanel();
         result.setLayout(new BorderLayout());
-        result.add(myRunButton, BorderLayout.WEST);
-        result.add(myInfoButton, BorderLayout.EAST);
+        result.add(myRunButton, BorderLayout.CENTER);
+        result.add(myInfoButton, BorderLayout.WEST);
         return result;
     }
 

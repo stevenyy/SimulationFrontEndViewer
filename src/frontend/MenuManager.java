@@ -1,14 +1,21 @@
 package frontend;
 
+import java.awt.Rectangle;
+import java.awt.Robot;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import javax.imageio.ImageIO;
 import javax.swing.AbstractAction;
 import javax.swing.JComponent;
+import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 import javax.swing.JSeparator;
+import javax.swing.SwingUtilities;
 import frontend.Util;
-
 import backend.*;
 import frontend.FrontEndViewer;
 
@@ -75,7 +82,7 @@ public class MenuManager extends JComponent {
                 }
             }
         });*/
-        result.add(new AbstractAction("Save Graph Drawn") {
+        result.add(new AbstractAction("Visualize in Google Map") {
             @Override
             public void actionPerformed (ActionEvent e) {
                 try {
@@ -84,6 +91,26 @@ public class MenuManager extends JComponent {
                                                   JOptionPane.INFORMATION_MESSAGE);
                     myFrontViewer.updataVariablesPanel();
                     myFrontViewer.updateProceduresPanel();
+                }
+                catch (Exception io) {
+                    Util.showError(io.toString());
+                }
+            }
+        });
+        result.add(new AbstractAction("Save Graph Drawn") {
+            @Override
+            public void actionPerformed (ActionEvent e) {
+                try {
+                    Util.makeScreenshot((JFrame)SwingUtilities.getRoot(myFrontViewer));
+/*                    Rectangle screenRect = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
+                    BufferedImage capture = new Robot().createScreenCapture(screenRect);
+                    ImageIO.write(capture, "png", new File("SavedGraph"));*/
+                    
+/*                    myModel.saveProceduresToFile(DEFAULT_RESOURCE_RESULT_SAVE);
+                    JOptionPane.showMessageDialog(null, "Save Procedures Done", "Done",
+                                                  JOptionPane.INFORMATION_MESSAGE);
+                    myFrontViewer.updataVariablesPanel();
+                    myFrontViewer.updateProceduresPanel();*/
                 }
                 catch (Exception io) {
                     Util.showError(io.toString());

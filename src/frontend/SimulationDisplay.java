@@ -21,8 +21,8 @@ import backend.Model;
 public class SimulationDisplay {
     // create program specific components
     public static final String TITLE = "Simulation GUI";
-    private static final int GRAPHICS_PANEL_SIZE_X = 800;
-    private static final int GRAPHICS_PANEL_SIZE_Y = 600;
+    private static final int GRAPHICS_PANEL_SIZE_X = 700;
+    private static final int GRAPHICS_PANEL_SIZE_Y = 500;
 
     // private List<Model> modelList= new ArrayList<Model>();
     public SimulationDisplay () {
