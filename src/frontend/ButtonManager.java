@@ -16,14 +16,14 @@ import frontend.SimulationDisplay;
 @SuppressWarnings("serial")
 public class ButtonManager extends JComponent {
     // private JButton exitProgram;
-    private JButton myInfoButton;
-    private JButton myRunButton;
+    private JButton myDrawButton;
+    private JButton myLoadButton;
     private JButton myDuplicateWindowButton;
     private GraphicsPanel myGraphicsPanel;
     private Model myModel;
     private ActionListener myPaintButtonListener;
     // private ActionListener myExitButtonListener;
-    private ActionListener myShowInfoButtonListener;
+    private ActionListener myDrawButtonListener;
     private ActionListener myDuplicateWindowButtonListener;
 
     protected ButtonManager () {
@@ -67,7 +67,7 @@ public class ButtonManager extends JComponent {
             }
         };
 
-        myShowInfoButtonListener = new ActionListener() {
+        myDrawButtonListener = new ActionListener() {
             @Override
             public void actionPerformed (ActionEvent e) {
                 // do stuff
@@ -98,11 +98,11 @@ public class ButtonManager extends JComponent {
 
     private void makeButtons () {
         // TODO Auto-generated method stub
-        myRunButton = createButton("LOAD DATA");
-        myRunButton.addActionListener(myPaintButtonListener);
+        myLoadButton = createButton("LOAD DATA");
+        myLoadButton.addActionListener(myPaintButtonListener);
         // createButton("EXIT").addActionListener(myExitButtonListener);
-        myInfoButton = createButton("SHOWINFO");
-        myInfoButton.addActionListener(myShowInfoButtonListener);
+        myDrawButton = createButton("DRAW");
+        myDrawButton.addActionListener(myDrawButtonListener);
         myDuplicateWindowButton = createButton("DUPLICATE WINDOW");
         myDuplicateWindowButton.addActionListener(myDuplicateWindowButtonListener);
     }
@@ -110,9 +110,9 @@ public class ButtonManager extends JComponent {
     public JComponent arrangeButtons () {
         JPanel result = new JPanel();
         result.setLayout(new BorderLayout());
+        result.add(myLoadButton, BorderLayout.WEST);
+        result.add(myDrawButton, BorderLayout.CENTER);
         result.add(myDuplicateWindowButton, BorderLayout.EAST);
-        result.add(myRunButton, BorderLayout.CENTER);
-        result.add(myInfoButton, BorderLayout.WEST);
         return result;
     }
 
@@ -126,15 +126,15 @@ public class ButtonManager extends JComponent {
     }
 
     public ActionListener getShowInfoButtonListener () {
-        return myShowInfoButtonListener;
+        return myDrawButtonListener;
     }
 
     public JButton getPaintButton () {
-        return myRunButton;
+        return myLoadButton;
     }
 
     public JButton getShowInfoButton () {
-        return myInfoButton;
+        return myDrawButton;
     }
 
     public JButton getDuplicateWindowButton(){

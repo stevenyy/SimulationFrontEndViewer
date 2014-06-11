@@ -49,11 +49,13 @@ public class FrontEndViewer extends JPanel {
     private ButtonManager myButtonManager;
     private MenuManager myMenuManager;
     private InfoPanel myInfoPanel;
+    private SliderManager mySliderManager;
 
     //TODO: need to fix problem in ButtonManager's initialization 
     public FrontEndViewer () {
         myButtonManager = new ButtonManager();
         myMenuManager = new MenuManager();
+        mySliderManager = new SliderManager();
     }
 
     protected void makePanels () {
@@ -65,6 +67,7 @@ public class FrontEndViewer extends JPanel {
     public void setGraphicsPanel (GraphicsPanel graphicsPanel) {
         myGraphicsPanel = graphicsPanel;
         myButtonManager.setGraphPanel(graphicsPanel);
+        mySliderManager.setGraphPanel(graphicsPanel);
     }
 
     public void setInfoPanel (InfoPanel infoPanel) {
@@ -75,8 +78,8 @@ public class FrontEndViewer extends JPanel {
         myModel = md;
         if (myInfoPanel != null)
             myInfoPanel.setModel(myModel);
-        if (myRunButton != null)
-            myButtonManager.setModel(myModel);
+        myButtonManager.setModel(myModel);
+        mySliderManager.setModel(myModel);
     }
 //TODO Finish the update part of all panels
     public void updateProceduresPanel () {
@@ -143,6 +146,14 @@ public class FrontEndViewer extends JPanel {
         sp.setPreferredSize(new Dimension(DEFAULT_PANEL_SIZE_X - 80, DEFAULT_PANEL_SIZE_Y));
         result.add(new JLabel(DISPLAY_OFFSET + "Opened Windows"), BorderLayout.NORTH);
         result.add(sp, BorderLayout.SOUTH);
+        return result;
+    }
+    
+    public JPanel makeButtonAndSlider(){
+        JPanel result = new JPanel();
+        result.setLayout(new BorderLayout());
+        result.add(mySliderManager.arrangeSliders(), BorderLayout.NORTH);
+        result.add(myButtonManager.arrangeButtons(), BorderLayout.SOUTH);
         return result;
     }
     

@@ -44,7 +44,8 @@ public class SimulationDisplay {
         jp.add(myGraphicsPanel, BorderLayout.CENTER);
         VisualChooser vis = new VisualChooser(myGraphicsPanel);
         jp.add(vis, BorderLayout.NORTH);
-        jp.add(display.getButtonManager().arrangeButtons(), BorderLayout.SOUTH);
+        jp.add(display.makeButtonAndSlider(), BorderLayout.SOUTH);
+//        jp.add(display.getButtonManager().arrangeButtons(), BorderLayout.SOUTH);
         
         // create container that will work with Window manager
         JFrame frame = new JFrame(TITLE);
@@ -52,7 +53,7 @@ public class SimulationDisplay {
         // add our user interface components to Frame and show it
         frame.getContentPane().add(jp, BorderLayout.WEST);
         frame.getContentPane().add(display.makeAssistPanels(), BorderLayout.EAST);
-//        frame.getContentPane().add(wp.getJPanel(), BorderLayout.SOUTH);
+//        frame.getContentPane().add(display.makeButtonAndSlider(), BorderLayout.SOUTH);
         frame.setJMenuBar(display.getMenuManager().makeMenu());
         
         frame.pack();
