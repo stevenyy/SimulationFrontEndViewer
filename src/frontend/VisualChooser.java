@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -44,8 +45,12 @@ public class VisualChooser extends JPanel {
         visualList.addActionListener(visualListListener);
         JLabel label = new JLabel("  Choose Data Visualization Tool ");
 //        label.setFont(new Font("Serif",Font.PLAIN, 20));
+        visualList.setBorder(
+                             BorderFactory.createEmptyBorder(0, 0, 10, 0));
+        label.setBorder(BorderFactory.createEmptyBorder(5, 0, 0, 0));
         add(visualList, BorderLayout.SOUTH);
         add(label, BorderLayout.NORTH);
+
     }
 
     public JPanel getColorPanel () {

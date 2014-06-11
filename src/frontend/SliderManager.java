@@ -73,8 +73,8 @@ public class SliderManager extends JPanel {
         myHourSlider.setPaintTicks(true);
         myHourSlider.setPaintLabels(true);
         myHourSlider.setBorder(
-                                BorderFactory.createEmptyBorder(0, 0, 10, 0));
-        Font font = new Font("Serif", Font.BOLD, 12);
+                                BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        Font font = new Font("Serif", Font.ITALIC, 12);
         myHourSlider.setFont(font);
         
         // Add the changeListener to the HourSlider just created above
