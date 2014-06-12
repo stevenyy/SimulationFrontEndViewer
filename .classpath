@@ -20,5 +20,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3"/>
 	<classpathentry kind="lib" path="lib/jcsv-1.4.0-javadoc.jar"/>
 	<classpathentry kind="lib" path="lib/jcsv-1.4.0-sources.jar"/>
+	<classpathentry kind="lib" path="lib/opencsv-2.3/deploy/opencsv-2.3.jar" sourcepath="lib/opencsv-2.3/src"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

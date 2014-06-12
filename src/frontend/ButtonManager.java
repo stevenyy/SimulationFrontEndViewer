@@ -12,6 +12,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JPanel;
 import backend.Model;
 import backend.Parser;
+import backend.ParserControl;
 import frontend.SimulationDisplay;
 
 @SuppressWarnings("serial")
@@ -46,7 +47,7 @@ public class ButtonManager extends JComponent {
             @Override
             public void actionPerformed (ActionEvent e) {
                 try {
-                    Parser.parseCSV();
+                    ParserControl.parseCSV();
                     //                    myGraphicsPanel.setImageFile(file.getName());
                     myGraphicsPanel.update(myModel);
                 }

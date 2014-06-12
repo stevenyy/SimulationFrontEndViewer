@@ -7,6 +7,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import backend.ReflectionException;
 
 /**
  * Util class with some universal method intended for direct and easier access
@@ -22,6 +23,63 @@ public class Util {
                                       "Error",
                                       JOptionPane.ERROR_MESSAGE);
     }
+    
+    /** 
+     * Check and see if same instance
+     */
+    private static boolean isInstance (Class<?> clss, Object instance)
+    {
+        final String TYPE = "TYPE";
+
+        try
+        {
+            // handle primitives specially
+            if (clss.isPrimitive())
+            {
+                Class<?> thePrimitive = (Class<?>)getFieldValue(instance, TYPE);
+                if (! isAssignableFrom(clss, thePrimitive))
+                {
+                    // primitives are not exactly the same
+                    return false;
+                }
+            }
+            else if (! clss.isInstance(instance))
+            {
+                // not an instance of class or its sub-classes
+                return false;
+            }
+            return true;
+        }
+        catch (Exception e)
+        {
+            // tried to compare primitive to non-primitive
+            return false;
+        }
+    }
+    
+    /**
+     * Given a target object with an instance variable with the given name,
+     * get the value of the named variable on that object and return it.
+     */
+    public static Object getFieldValue (Object target, String name)
+        throws ReflectionException
+    {
+        try
+        {
+            return target.getClass().getDeclaredField(name).get(target);
+        }
+        catch (Exception e)
+        {
+            throw new ReflectionException("No matching public instance variable for " + 
+                                          target.getClass().getName());
+        }
+    }
+    
+    private static boolean isAssignableFrom (Class<?> formal, Class<?> arg)
+    {
+        return formal.isAssignableFrom(arg);
+    }
+
     
     /**
      * Use this method to create a screenshot of the JFrame object argFrame.
