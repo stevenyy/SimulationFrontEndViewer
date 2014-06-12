@@ -10,9 +10,15 @@ public class Model {
     public static final String PREFERENCES_FILEPATH = "backend.resources.Preferences";
     
     private List<View> views = new ArrayList<View>();
+    private List<BaseStation> BSList = new ArrayList<BaseStation>();
     
     // One model corresponds to one JFrame
     // model itself keeps track of which visualization method is currently used
+    
+    public void loadData(){
+        // update if BSList is not empty
+        // create new BSlist if otherwise   
+    }
 
     public void loadProceduresFromFile (String defaultResourceDataLoad) {
         // TODO Auto-generated method stub
