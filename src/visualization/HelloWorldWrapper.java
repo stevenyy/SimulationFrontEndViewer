@@ -41,6 +41,8 @@ class HelloWorldWrapper {
         .setApplicationName("Google-MapsEngineSample/1.0")
         .setMapsEngineRequestInitializer(apiKeyInitializer)
         .build();
+    
+    
 
     List<Polygon> hawaiianIslands = readStateShapes(engine, "Hawaii");
     Polygon maui = hawaiianIslands.get(6);

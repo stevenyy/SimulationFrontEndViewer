@@ -12,7 +12,7 @@
 	<classpathentry kind="lib" path="lib/mapsengine-api-java-wrapper-0.1-sources.jar"/>
 	<classpathentry kind="lib" path="lib/google-http-java-client/libs/google-http-client-appengine-1.18.0-rc.jar"/>
 	<classpathentry kind="lib" path="lib/google-http-java-client/libs/google-http-client-1.18.0-rc.jar"/>
-	<classpathentry kind="lib" path="lib/mapsengine/google-api-services-mapsengine-v1-rev16-1.18.0-rc.jar"/>
+	<classpathentry kind="lib" path="lib/mapsengine/google-api-services-mapsengine-v1-rev16-1.18.0-rc.jar" sourcepath="lib/mapsengine/google-api-services-mapsengine-v1-rev16-1.18.0-rc-sources.jar"/>
 	<classpathentry kind="lib" path="lib/mapsengine/google-api-services-mapsengine-v1-rev16-1.18.0-rc-sources.jar"/>
 	<classpathentry kind="lib" path="lib/mapsengine/google-api-services-mapsengine-v1-rev16-1.18.0-rc-javadoc.jar"/>
 	<classpathentry kind="lib" path="lib/google-api-java-client/libs/google-api-client-gson-1.18.0-rc.jar"/>
@@ -29,7 +29,7 @@
 	<classpathentry kind="lib" path="lib/google-http-java-client/libs/google-http-client-gson-1.18.0-rc.jar"/>
 	<classpathentry kind="lib" path="lib/google-http-java-client/libs/google-http-client-jackson-1.18.0-rc.jar"/>
 	<classpathentry kind="lib" path="lib/google-api-java-client/libs/commons-logging-1.1.1.jar"/>
-	<classpathentry kind="lib" path="lib/google-api-java-client/libs/google-api-client-1.18.0-rc.jar"/>
+	<classpathentry kind="lib" path="lib/google-api-java-client/libs/google-api-client-1.18.0-rc.jar" sourcepath="lib/google-api-java-client/libs-sources/google-api-client-1.18.0-rc-sources.jar"/>
 	<classpathentry kind="lib" path="lib/google-api-java-client/libs/google-api-client-appengine-1.18.0-rc.jar"/>
 	<classpathentry kind="lib" path="lib/google-api-java-client/libs/google-api-client-jackson2-1.18.0-rc.jar"/>
 	<classpathentry kind="lib" path="lib/google-api-java-client/libs/google-api-client-java6-1.18.0-rc.jar"/>
