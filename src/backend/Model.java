@@ -3,7 +3,6 @@ package backend;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
-import com.google.apphosting.api.ApiProxy.ArgumentException;
 import frontend.View;
 import sun.security.pkcs.ParsingException;
 
@@ -38,7 +37,7 @@ public class Model {
         
     }
 
-    public void run () throws ParsingException, ArgumentException{
+    public void run () throws ParsingException{
         // TODO Auto-generated method stub
         // Where Data Visualization Take Place
         
