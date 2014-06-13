@@ -8,6 +8,9 @@ public class BaseStation {
     private List<Double> myTrafficList = new ArrayList<Double>();
     private Map<String, Double> myTrafficMap = new HashMap<String, Double>();
     
+    protected BaseStation(){
+        
+    }
     protected BaseStation(double x, double y){
         xPos = x;
         yPos = y;

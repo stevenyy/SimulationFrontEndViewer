@@ -17,6 +17,9 @@
 	<classpathentry kind="lib" path="lib/swingx-ws-1.0-javadoc.jar"/>
 	<classpathentry kind="lib" path="lib/swingx-ws-r317-sources.jar"/>
 	<classpathentry kind="lib" path="lib/swingx-ws-r317.jar" sourcepath="lib/swingx-ws-r317-sources.jar"/>
+	<classpathentry kind="lib" path="lib/mapsengine-api-java-wrapper-0.1-javadoc.jar"/>
+	<classpathentry kind="lib" path="lib/mapsengine-api-java-wrapper-0.1.jar"/>
+	<classpathentry kind="lib" path="lib/mapsengine-api-java-wrapper-0.1-sources.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3"/>
 	<classpathentry kind="lib" path="lib/jcsv-1.4.0-javadoc.jar"/>
 	<classpathentry kind="lib" path="lib/jcsv-1.4.0-sources.jar"/>
