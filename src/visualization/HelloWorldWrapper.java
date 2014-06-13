@@ -23,7 +23,7 @@ import java.util.List;
 class HelloWorldWrapper {
 
   static final String SAMPLE_TABLE_ID = "12421761926155747447-14043129889721455791";
-  static final String PUBLIC_API_KEY = "YOUR_API_KEY_HERE";
+  static final String PUBLIC_API_KEY = "AIzaSyDFIeK8UYdbJPFlk5gczrgy5oJIvc8ZNzg";
 
   public static void main(String[] args) throws Exception {
     HttpTransport transport = new NetHttpTransport();
