@@ -27,9 +27,9 @@ public class ParserControl{
                 CSVReader reader = new CSVReader(new InputStreamReader(fis, "UTF-8"));
                 // nextLine[] is an array of values from the line
                 String [] nextLine;
-                List<Double> convertedLine = new ArrayList<Double>();
                 int counter = 0;
                 while ((nextLine = reader.readNext()) != null) {
+                    List<Double> convertedLine = new ArrayList<Double>();
                     for (int i = 0; i<nextLine.length; i++){
                         convertedLine.add(Double.parseDouble(nextLine[i]));
                     }
@@ -37,7 +37,7 @@ public class ParserControl{
                         Double x = convertedLine.get(0);
                         Double y = convertedLine.get(1);
                         BSList.add(new BaseStation(x, y));
-                        System.out.println(nextLine[0] + " and then " + nextLine[1] + "etc...");
+//                        System.out.println(nextLine[0] + " and then " + nextLine[1] + "etc...");
                         //                    for (BaseStation bs: BSList){
                         //                        System.out.println(bs.toString());
                         //                    }

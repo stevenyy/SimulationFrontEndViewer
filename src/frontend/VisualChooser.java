@@ -28,7 +28,8 @@ public class VisualChooser extends JPanel {
         // Create some items to add to the list\
         String listData[] =
         {
-         "GoogleMap",
+         "BigGoogleMap",
+         "SmallGoogleMap",
          "HeatMap",
          "Piechart",
          "Histogram"
@@ -39,6 +40,8 @@ public class VisualChooser extends JPanel {
             public void actionPerformed (ActionEvent e) {
                 JComboBox vb = (JComboBox) e.getSource();
                 String visualName = (String) vb.getSelectedItem();
+//                System.out.println("@VisualChooser the selected one is " + visualName);
+                myModel.setVisual(visualName);
                 myGraphicsPanel.update(visualName);
             }
         };

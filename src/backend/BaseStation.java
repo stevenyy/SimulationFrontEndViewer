@@ -25,10 +25,8 @@ public class BaseStation {
         myTrafficList = convertedLine;
     }
     
-    @Override
-    public String toString(){
-        return String.format("the position of the BaseStation is " +
-                "x: %s ; y: %s ", xPos, yPos);
+    public String getCoordinates(){
+        return String.format("x: %s ; y: %s ", xPos, yPos);
     }
-   
+
 }

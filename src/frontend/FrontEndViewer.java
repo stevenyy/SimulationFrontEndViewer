@@ -7,6 +7,8 @@ import java.awt.event.ActionListener;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -49,8 +51,8 @@ public class FrontEndViewer extends JPanel {
     private MenuManager myMenuManager;
     private InfoPanel myInfoPanel;
     private SliderManager mySliderManager;
+    private List<WindowPanel> myWindowPanelList = new ArrayList<WindowPanel>();
 
-    //TODO: need to fix problem in ButtonManager's initialization 
     public FrontEndViewer () {
         myButtonManager = new ButtonManager();
         myMenuManager = new MenuManager();
@@ -60,7 +62,7 @@ public class FrontEndViewer extends JPanel {
     protected void makePanels () {
         myWindowPanel = new WindowPanel(this);
         myInfoPanel = new InfoPanel(myModel);
-        // makeImageButton();
+        myWindowPanelList.add(myWindowPanel);
     }
 
     public void setGraphicsPanel (GraphicsPanel graphicsPanel) {
@@ -86,10 +88,6 @@ public class FrontEndViewer extends JPanel {
             myProceduresPanel.update(procedure);
         }
     }
-
-    public void updataVariablesPanel () {
-        myVariablesPanel.update(myModel);
-    }
     
     public void updateWindowPanel(){
         myWindowPanel.update("");
@@ -102,7 +100,6 @@ public class FrontEndViewer extends JPanel {
             desktop.open(helpFile);
         }
         catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
@@ -162,5 +159,9 @@ public class FrontEndViewer extends JPanel {
     
     public MenuManager getMenuManager(){
         return myMenuManager;
+    }
+    
+    public List<WindowPanel> getPanelList(){
+        return myWindowPanelList;
     }
 }

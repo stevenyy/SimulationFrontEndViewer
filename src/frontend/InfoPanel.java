@@ -1,6 +1,7 @@
 package frontend;
 
 import javax.swing.JTextArea;
+import backend.BaseStation;
 import backend.Model;
 
 /**
@@ -15,7 +16,6 @@ public class InfoPanel extends JTextArea implements View{
     private Model myModel;
 
     public InfoPanel (Model model) {
-        // TODO Auto-generated constructor stub
         super(INFO_PANEL_SIZE, INFO_PANEL_SIZE);
         this.setFocusable(false);
         myModel = model;
@@ -24,14 +24,20 @@ public class InfoPanel extends JTextArea implements View{
 
     @Override
     public void update (Model model) {
-        // TODO Auto-generated method stub
         this.setText(DISPLAY_OFFSET);
-
+        update("HIGHLIGHTS: ");
+        update(model.getAnalysis()); // TODO: returns highlights of the data
+        update("COORDINATES: ");
+        int BSCounter = 0;
+        for (BaseStation bs: model.getBSList()){
+            BSCounter++;
+            update("BS"+ BSCounter + " : " + bs.getCoordinates());
+            
+        }
     }
 
     @Override
     public void update (String s) {
-        // TODO Auto-generated method stub
         showMessage(DISPLAY_OFFSET + s);
     }
 
@@ -41,10 +47,10 @@ public class InfoPanel extends JTextArea implements View{
         this.setCaretPosition(this.getText().length());
     }
 
-public void setModel (Model md) {
-    // TODO Auto-generated method stub
-    myModel = md;
-}
+    public void setModel (Model md) {
+        // TODO Auto-generated method stub
+        myModel = md;
+    }
 
 
 }
