@@ -44,14 +44,12 @@ public class ButtonManager extends JComponent {
 
     private void makeListeners () {
         myLoadButtonListener = new ActionListener() {
-            @Override
             public void actionPerformed (ActionEvent e) {
                 myModel.loadData();
             }
         };
 
         myDrawButtonListener = new ActionListener() {
-            @Override
             public void actionPerformed (ActionEvent e) {
                 // do stuff
                 // displayHelpWindow();
@@ -59,7 +57,6 @@ public class ButtonManager extends JComponent {
         };
 
         myDuplicateWindowButtonListener = new ActionListener(){
-            @Override
             public void actionPerformed (ActionEvent e){
                 String currentVisual = myGraphicsPanel.getVisual();
                 SimulationDisplay.build();
