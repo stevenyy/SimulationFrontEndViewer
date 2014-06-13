@@ -46,15 +46,7 @@ public class ButtonManager extends JComponent {
         myLoadButtonListener = new ActionListener() {
             @Override
             public void actionPerformed (ActionEvent e) {
-                try {
-                    ParserControl.parseCSV();
-                    //                    myGraphicsPanel.setImageFile(file.getName());
-                    myGraphicsPanel.update(myModel);
-                }
-                catch (FileNotFoundException e1) {
-                    // TODO Auto-generated catch block
-                    e1.printStackTrace();
-                }
+                myModel.loadData();
             }
         };
 

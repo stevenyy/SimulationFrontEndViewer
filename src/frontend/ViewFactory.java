@@ -17,7 +17,11 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
-
+/**
+ * CURRENTLY NOT USED
+ * @author siyangwang
+ *
+ */
 public class ViewFactory {
 
         public ViewFactory(){

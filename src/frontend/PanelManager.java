@@ -4,6 +4,11 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import frontend.*;
 
+/**
+ * CURRENTLY NOT USED
+ * @author siyangwang
+ *
+ */
 @SuppressWarnings("serial")
 public class PanelManager extends JComponent{
 

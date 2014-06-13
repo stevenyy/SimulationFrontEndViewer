@@ -5,6 +5,7 @@ import java.util.*;
 public class BaseStation {
     private double xPos;
     private double yPos;
+    private List<Double> myTrafficList = new ArrayList<Double>();
     private Map<String, Double> myTrafficMap = new HashMap<String, Double>();
     
     protected BaseStation(double x, double y){
@@ -17,8 +18,8 @@ public class BaseStation {
         yPos = y;
     }    
     
-    public void setTraffic(){
-        
+    public void setTraffic(List<Double> convertedLine){
+        myTrafficList = convertedLine;
     }
     
     @Override

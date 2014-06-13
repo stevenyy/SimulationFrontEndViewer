@@ -13,10 +13,10 @@ import backend.BaseStation;
 
 
 public class ParserControl{
-    
+
     public static List<BaseStation> parseCSV() throws FileNotFoundException{
         List<BaseStation> BSList = new ArrayList<BaseStation>();
-        
+
         JFileChooser fc = makeFileChooser();
         int returnVal = fc.showOpenDialog(null);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
@@ -25,16 +25,32 @@ public class ParserControl{
             try {
                 @SuppressWarnings("resource")
                 CSVReader reader = new CSVReader(new InputStreamReader(fis, "UTF-8"));
+                // nextLine[] is an array of values from the line
                 String [] nextLine;
+                List<Double> convertedLine = new ArrayList<Double>();
+                int counter = 0;
                 while ((nextLine = reader.readNext()) != null) {
-                    // nextLine[] is an array of values from the line
-                  Double x = Double.parseDouble(nextLine[0]);
-                  Double y = Double.parseDouble(nextLine[1]);
-                  BSList.add(new BaseStation(x, y));
-//                  System.out.println(nextLine[0] + "and then" + nextLine[1] + "etc...");
-/*                  for (BaseStation bs: BSList){
-                      System.out.println(bs.toString());
-                  }*/
+                    for (int i = 0; i<nextLine.length; i++){
+                        convertedLine.add(Double.parseDouble(nextLine[i]));
+                    }
+                    if (nextLine.length == 2){
+                        Double x = convertedLine.get(0);
+                        Double y = convertedLine.get(1);
+                        BSList.add(new BaseStation(x, y));
+                        System.out.println(nextLine[0] + " and then " + nextLine[1] + "etc...");
+                        //                    for (BaseStation bs: BSList){
+                        //                        System.out.println(bs.toString());
+                        //                    }
+                    }
+                    if (nextLine.length > 2){
+                        if(BSList.isEmpty()){
+                            //TODO: jump out a conversation dialog that notifies first to load coordinate file                            
+                        }
+                        else{
+                            BSList.get(counter).setTraffic(convertedLine);
+                        }
+                    }
+                    counter++;
                 }
             }
             catch (UnsupportedEncodingException e) {
