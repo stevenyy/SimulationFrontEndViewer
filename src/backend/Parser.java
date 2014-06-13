@@ -5,7 +5,6 @@ import com.googlecode.jcsv.reader.CSVEntryParser;
 
 public class Parser implements CSVEntryParser<BaseStation> {
 
-    @Override
     public BaseStation parseEntry (String ... data) {
         // TODO Auto-generated method stub
         if (data.length < 2) { throw new IllegalArgumentException(
