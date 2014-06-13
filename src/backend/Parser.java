@@ -2,7 +2,11 @@ package backend;
 
 import com.googlecode.jcsv.reader.CSVEntryParser;
 
-
+/**
+ * CURRENTLY NOT USED
+ * @author siyangwang
+ *
+ */
 public class Parser implements CSVEntryParser<BaseStation> {
 
     public BaseStation parseEntry (String ... data) {

@@ -1,8 +1,8 @@
 package backend;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
-import com.google.apphosting.api.ApiProxy.ArgumentException;
 import frontend.View;
 import sun.security.pkcs.ParsingException;
 
@@ -16,8 +16,15 @@ public class Model {
     // model itself keeps track of which visualization method is currently used
     
     public void loadData(){
-        // update if BSList is not empty
-        // create new BSlist if otherwise   
+        try {
+            BSList = ParserControl.parseCSV();
+            //                    myGraphicsPanel.setImageFile(file.getName());
+            // TODO: Model delegate the drawing task to other thing, and the other thing has access to myGraphicsPanel
+//            myGraphicsPanel.update(this);
+        }
+        catch (FileNotFoundException e1) {
+            e1.printStackTrace();
+        }
     }
 
     public void loadProceduresFromFile (String defaultResourceDataLoad) {
@@ -30,7 +37,7 @@ public class Model {
         
     }
 
-    public void run () throws ParsingException, ArgumentException{
+    public void run () throws ParsingException{
         // TODO Auto-generated method stub
         // Where Data Visualization Take Place
         
@@ -39,6 +46,10 @@ public class Model {
     public void registerView (View view) {
         // TODO Auto-generated method stub
         views.add(view);
+    }
+    
+    public List<BaseStation> getBSList(){
+        return BSList;
     }
 
 }

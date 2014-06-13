@@ -20,6 +20,7 @@ public class GraphicsPanel extends JPanel implements View {
     private BufferedImage myImage;
     private Model myModel;
     private String currentVisual;
+    
 
     public GraphicsPanel (int SizeX, int SizeY, Model md) {
         myModel=md;
